@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-create on 2018-03-29 上午12:06
+create on 2018-04-01 上午10:34
 
 author @heyao
 """
+
 from __future__ import unicode_literals, print_function
 
-import time
-import signal
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -36,6 +35,12 @@ def accompany_last_formatted(from_date, to_date, datefmt="{years}年{months}月{
 
 def now():
     return datetime.now()
+
+
+def get_experience():
+    obj = recall()
+    experience = obj['experience']
+    return experience
 
 
 def get_relationship():
@@ -80,25 +85,3 @@ def show_it_again(flush=True):
     relation_date = get_accompany_start_date()
     end = '\r' if flush else '\n'
     print("{0: ^44}".format(accompany_last_formatted(relation_date, now())), end=end, flush=flush)
-
-
-class Accompany(object):
-    def __init__(self):
-        self.not_stop = 1
-
-    def handler(self, signum, frame):
-        self.not_stop = 0
-
-    def run(self):
-        show_title()
-        self.not_stop = 1
-        signal.signal(signal.SIGINT, self.handler)
-        while self.not_stop:
-            show_it_again()
-            time.sleep(1)
-
-
-accompany = Accompany()
-
-if __name__ == '__main__':
-    print(accompany_last_formatted(datetime(1994, 4, 28), datetime.now()))

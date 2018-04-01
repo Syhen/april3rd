@@ -4,7 +4,8 @@ create on 2018-03-28 上午12:58
 
 author @heyao
 """
-from april3rd.experience import show_it_again, show_title, accompany
+from april3rd.experience.utils import show_it_again, show_title as _show_title
+from april3rd.experience.show import accompany
 
-show_title()
+_show_title()
 show_it_again(False)
