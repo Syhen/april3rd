@@ -5,6 +5,7 @@ create on 2018-03-31 下午7:34
 author @heyao
 """
 import base64
+from functools import partial
 try:
     import cPickle as pickle
 except ImportError:
@@ -28,9 +29,14 @@ def load_iv():
 
 
 def recall(piece='time_machine.pkl'):
-    with open(str(memory_path / piece), 'rb') as f:
-        memory = f.read()
+    try:
+        with open(str(memory_path / piece), 'rb') as f:
+            memory = f.read()
+    except FileNotFoundError:
+        return None
     if piece != "keep.pkl":
         memory = decrypt(memory, load_key(), load_iv())
     memory = pickle.loads(memory)
     return memory
+
+load_cache = partial(recall, 'cache_birthday.pkl')
