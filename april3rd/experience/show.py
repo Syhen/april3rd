@@ -15,7 +15,7 @@ def show_experience(experience):
     key = obj.key
     date = experience['date']
     action = experience['action']
-    print(date.strftime("%Y年%m月%d日"), action[key])
+    print(date.strftime("%Y{0}%m{1}%d{2}").format('年', '月', '日'), action[key])
 
 
 class Accompany(object):
