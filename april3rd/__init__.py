@@ -16,8 +16,13 @@ from .experience.utils import now
 cache = load_cache()
 if not cache or cache['year'] != now().year:
     print("喝药正在做一些准备工作，可能会花10s左右的时间，请等待~")
-    new_birthday = search_birthday()
-    cache_birthday_for_year(new_birthday, now().year)
+    new_birthday = None
+    try:
+        new_birthday = search_birthday()
+    except Exception as e:
+        print("出了一点问题", e)
+    if new_birthday:
+        cache_birthday_for_year(new_birthday, now().year)
 
 _show_birthday()
 _show_title()
