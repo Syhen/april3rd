@@ -48,9 +48,41 @@ class GirlFriend(GayFriend):
 
     @action.setter
     def action(self, val):
-        raise RuntimeError("任何人都不能阻止我和乖在一起！")
+        raise RuntimeError("任何人都不能阻止我和乖%s！" % self.action)
+
+    @property
+    def key(self):
+        return 'gf'
+
+    @key.setter
+    def key(self, val):
+        raise RuntimeError("谁叫你改的？？")
 
 
 class Wife(GirlFriend):
     def __init__(self, name="乖"):
         super(Wife, self).__init__(name)
+
+    @property
+    def name(self):
+        return '老婆'
+
+    @name.setter
+    def name(self, val):
+        raise RuntimeError("任何人都不能改我%s的名字！" % self.name)
+
+    @property
+    def action(self):
+        return '结婚'
+
+    @action.setter
+    def action(self, val):
+        raise RuntimeError("任何人都不能阻止我和乖%s！" % self.action)
+
+    @property
+    def key(self):
+        return 'wife'
+
+    @key.setter
+    def key(self, val):
+        raise RuntimeError("谁叫你改的？？")
