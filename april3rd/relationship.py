@@ -40,7 +40,7 @@ class GirlFriend(GayFriend):
 
     @name.setter
     def name(self, val):
-        raise RuntimeError("can't set name")
+        raise RuntimeError("任何人都不能改我乖的名字！")
 
     @property
     def action(self):
@@ -48,7 +48,7 @@ class GirlFriend(GayFriend):
 
     @action.setter
     def action(self, val):
-        raise RuntimeError("can't set action")
+        raise RuntimeError("任何人都不能阻止我和乖在一起！")
 
 
 class Wife(GirlFriend):
