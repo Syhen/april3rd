@@ -25,7 +25,7 @@ setup(
     ],
     author_email='syhens@163.com',
     url='https://github.com/Syhen/april3rd',
-    install_requires=['python-dateutil', 'pathlib', 'pycrypto'],
+    install_requires=['python-dateutil', 'pathlib', 'pycrypto', 'requests'],
     description="喝药和乖乖的6个月纪念日",
     long_description=long_description,
     packages=find_packages(),
